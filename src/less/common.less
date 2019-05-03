@@ -1,0 +1,32 @@
+@import "./default.less";
+@import "./loading.less";
+body{
+  font-family: '"Helvetica Neue For Number", "PingFang SC Light", "Heiti SC", "San Francisco", "Helvetica", Arial, sans-serif';
+  background-color: @colorL;
+}
+.container{
+  display: flex;
+  color: @colorH;
+  font-size: 14px;
+  .nav-left{
+    min-width: 270px;
+    height: calc(100vh);
+    background-color: @colorR;
+  }
+  .main{
+    flex: 1;
+    height: calc(100vh);
+    
+    overflow: auto;
+    .content{
+      padding: 20px;
+    }
+  }
+  .contend-warp{
+    background-color: #fff;
+    table{
+      border: none;
+      border-bottom: 1px solid #e8e8e8;
+    }
+  }
+}
