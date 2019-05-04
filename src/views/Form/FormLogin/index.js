@@ -41,6 +41,9 @@ class FormLogin extends React.Component {
                                     rules: [{
                                         required: true,
                                         message: '请输入用户名!'
+                                    }, {
+                                        pattern: new RegExp('^\\w+$', 'g'),
+                                        message: "用户名必须为字母或数字"
                                     }]
                                 })(
                                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="text" placeholder="请输入用户名" />
@@ -74,7 +77,7 @@ class FormLogin extends React.Component {
                                     <Checkbox>记住密码</Checkbox>
                                 )
                             }
-                            <a href="/admin/form/login" style={{float:'right'}}>忘记密码</a>
+                            <a href="/admin/form/login" style={{ float: 'right' }}>忘记密码</a>
                         </FormItem>
                         <FormItem>
                             <Button type="primary" onClick={this.handleSubmit}>登录</Button>

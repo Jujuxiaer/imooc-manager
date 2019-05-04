@@ -15,7 +15,7 @@ import Tabs from '../views/UI/Tabs';
 import Gallerys from '../views/UI/Gallerys';
 import Carousels from '../views/UI/Carousels';
 import FormLogin from '../views/Form/FormLogin';
-// import FormRegister from '../views/Form/FormRegister';
+import FormRegister from '../views/Form/FormRegister';
 // import BasicTable from '../views/Table/BasicTable';
 // import HighTable from '../views/Table/HighTable';
 import City from '../views/City';
@@ -42,7 +42,7 @@ export default class Routers extends Component {
                   <Route path={`${match.path}/ui/gallerys`} component={Gallerys} />
                   <Route path={`${match.path}/ui/carousels`} component={Carousels} />
                   <Route path={`${match.path}/form/login`} component={FormLogin} />
-                  {/* <Route path={`${match.path}/form/register`} component={FormRegister} /> */}
+                  <Route path={`${match.path}/form/register`} component={FormRegister} />
                   {/* <Route path={`${match.path}/table/basic`} component={BasicTable} /> */}
                   {/* <Route path={`${match.path}/table/high`} component={HighTable} /> */}
                   <Route path={`${match.path}/city`} component={City} />
