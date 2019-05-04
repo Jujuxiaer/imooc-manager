@@ -1,12 +1,39 @@
 import React from 'react';
+import { Card, Carousel } from "antd"
 import "./index.less";
 
 export default class Carousels extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+
     render() {
         return (
-            <div className="login-warp">
-                this is Carousels page
-      </div>
+            <div className="carousel-warp">
+                <Card title="文字背景轮播" className="card">
+                    <Carousel
+                        autoplay={true}
+                        effect="fade"
+                    >
+                        <div><h3>Ant Motion Banner - React</h3></div>
+                        <div><h3>Ant Motion Banner - Vue</h3></div>
+                        <div><h3>Ant Motion Banner - Angular</h3></div>
+                    </Carousel>
+                </Card>
+
+                <Card title="图片轮播" className="card">
+                    <Carousel
+                        autoplay={true}
+                    >
+                        <div><img src={'/carousel-img/carousel-1.jpg'} alt="" /></div>
+                        <div><img src={'/carousel-img/carousel-2.jpg'} alt="" /></div>
+                        <div><img src={'/carousel-img/carousel-3.jpg'} alt="" /></div>
+                    </Carousel>
+                </Card>
+            </div>
         )
     }
 }
