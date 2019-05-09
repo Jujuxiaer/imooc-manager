@@ -80,7 +80,10 @@ export default class BasicTable extends React.Component {
     request = () => {
         axios.ajax({
             url: '/table/list',
-            params: this.params,
+            data: {
+                params: this.params,
+                isShowLoading: false
+            }
         }).then((res) => {
             if (res.code === 0) {
                 this.setState({
