@@ -33,7 +33,7 @@ export default class BasicTable extends React.Component {
                 userName: 'peter',
                 sex: '0',
                 status: '3',
-                interest: '6',
+                interest: '5',
                 isMarry: '1',
                 birthday: '2000-01-01',
                 address: '北京市海淀区奥林匹克公园',
@@ -106,23 +106,45 @@ export default class BasicTable extends React.Component {
             },
             {
                 title: '性别',
-                dataIndex: 'sex'
+                dataIndex: 'sex',
+                render(sex) {
+                    return sex === 1 ? '男' : '女'
+                }
             },
             {
                 title: '状态',
-                dataIndex: 'status'
+                dataIndex: 'status',
+                render(status) {
+                    let config = {
+                        '1': '咸鱼一条',
+                        '2': '风华浪子',
+                        '3': '北大才子',
+                        '4': '百度FE',
+                        '5': '创业者',
+                    }
+                    return config[status]
+                }
             },
             {
                 title: '爱好',
-                dataIndex: 'interest'
-            },
-            {
-                title: '状态',
-                dataIndex: 'interest'
+                dataIndex: 'interest',
+                render(abc) {
+                    let config = {
+                        '1': '游泳',
+                        '2': '长跑',
+                        '3': '篮球',
+                        '4': '足球',
+                        '5': '爬山',
+                    }
+                    return config[abc]
+                }
             },
             {
                 title: '是否已婚',
-                dataIndex: 'isMarry'
+                dataIndex: 'isMarry',
+                render(isMarry) {
+                    return isMarry === 0 ? '已婚' : '未婚'
+                }
             },
             {
                 title: '生日',
