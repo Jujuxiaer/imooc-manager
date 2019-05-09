@@ -1,12 +1,16 @@
 import React from 'react'
 import { Card, Table } from 'antd'
 import "./index.less"
-import Axios from 'axios';
+import axios from '../../../axios/axios'
 
 export default class BasicTable extends React.Component {
 
     constructor(props) {
         super(props)
+        this.params = {
+            page: 1,
+            pageSize: 10
+        }
         this.state = {
             dataSource2: []
         }
@@ -74,16 +78,16 @@ export default class BasicTable extends React.Component {
     }
 
     request = () => {
-        const baseUrl = 'https://www.easy-mock.com/mock/5cd3e5ca9412184628109f28/mockapi'
-        Axios.get(baseUrl + '/table/list').then(
-            (res) => {
-                if (res.status == '200' && res.data.code == 0) {
-                    this.setState({
-                        dataSource2: res.data.result
-                    })
-                }
+        axios.ajax({
+            url: '/table/list',
+            params: this.params,
+        }).then((res) => {
+            if (res.code === 0) {
+                this.setState({
+                    dataSource2: res.result
+                })
             }
-        )
+        })
     }
 
 
