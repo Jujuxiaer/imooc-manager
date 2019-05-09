@@ -7,7 +7,7 @@ const FormItem = Form.Item;
 class FormLogin extends React.Component {
 
     handleSubmit = () => {
-        let userInfo = this.props.form.getFieldValue();
+        // let userInfo = this.props.form.getFieldValue();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 Message.success(`第一种获取用户信息方式：用户${values.userName}登陆成功`)
