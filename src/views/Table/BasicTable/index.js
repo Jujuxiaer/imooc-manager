@@ -1,13 +1,14 @@
 import React from 'react'
 import { Card, Table } from 'antd'
 import "./index.less"
+import Axios from 'axios';
 
 export default class BasicTable extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-
+            dataSource2: []
         }
     }
 
@@ -69,7 +70,22 @@ export default class BasicTable extends React.Component {
             dataSource: data
         })
 
+        this.request()
     }
+
+    request = () => {
+        const baseUrl = 'https://www.easy-mock.com/mock/5cd3e5ca9412184628109f28/mockapi'
+        Axios.get(baseUrl + '/table/list').then(
+            (res) => {
+                if (res.status == '200' && res.data.code == 0) {
+                    this.setState({
+                        dataSource2: res.data.result
+                    })
+                }
+            }
+        )
+    }
+
 
     render() {
         const columns = [
@@ -114,13 +130,22 @@ export default class BasicTable extends React.Component {
                 dataIndex: 'time'
             },
         ]
+
         return (
-            <div className="basic-table-warp">
-                <Card title="基础表格">
+            <div className="table-basic-warp">
+                <Card title="基础表格" className="card">
                     <Table
                         bordered
                         columns={columns}
                         dataSource={this.state.dataSource}
+                        pagination={false}
+                    />
+                </Card>
+                <Card title="动态数据渲染表格" className="card">
+                    <Table
+                        bordered
+                        columns={columns}
+                        dataSource={this.state.dataSource2}
                         pagination={false}
                     />
                 </Card>
