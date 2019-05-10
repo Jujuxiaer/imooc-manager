@@ -2,7 +2,6 @@ import React from 'react'
 import { Card, Table, Modal, Message, Button, Badge } from 'antd'
 import "./index.less"
 import axios from '../../../axios/axios'
-import Utils from '../../../utils/utils';
 import { sexConfig, statusConfig, interestConfig, isMarryConfig } from '../../../config/fieldRenderConfig';
 
 export default class HighTable extends React.Component {
