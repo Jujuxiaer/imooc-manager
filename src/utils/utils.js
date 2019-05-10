@@ -19,17 +19,17 @@ export default {
         fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
   },
-  pagination(data, callback) {
+  pagination(result, callback) {
     return {
-      current: data.page,
-      pageSize: data.page_size,
-      total: data.total,
+      current: result.page,
+      pageSize: result.page_size,
+      total: result.tatal_count,
       showQuickJumper: true,
       onChange: (page, pageSize) => {
         callback(page, pageSize);
       },
-      showTotal: () => {
-        return `共${data.total}条`
+      showTotal: (total) => {
+        return `共${total}条`
       }
     }
   }
