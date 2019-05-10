@@ -3,6 +3,7 @@ import { Card, Table, Modal, Message, Button } from 'antd'
 import "./index.less"
 import axios from '../../../axios/axios'
 import Utils from '../../../utils/utils';
+import { sexConfig, statusConfig, interestConfig, isMarryConfig } from '../../../config/fieldRenderConfig';
 
 export default class BasicTable extends React.Component {
 
@@ -84,7 +85,7 @@ export default class BasicTable extends React.Component {
 
     getList() {
         axios.ajax({
-            url: '/table/list',
+            url: '/table/basic/getList',
             params: this.params
         }).then((res) => {
             if (res.code === "0") {
@@ -156,70 +157,55 @@ export default class BasicTable extends React.Component {
 
 
     render() {
-        const columns = [
-            {
-                title: 'id',
-                dataIndex: 'id'
-            },
-            {
-                title: '用户名',
-                dataIndex: 'userName'
-            },
-            {
-                title: '性别',
-                dataIndex: 'sex',
-                render(sex) {
-                    return sex === 1 ? '男' : '女'
-                }
-            },
-            {
-                title: '状态',
-                dataIndex: 'status',
-                render(status) {
-                    let config = {
-                        '1': '咸鱼一条',
-                        '2': '风华浪子',
-                        '3': '北大才子',
-                        '4': '百度FE',
-                        '5': '创业者',
-                    }
-                    return config[status]
-                }
-            },
-            {
-                title: '爱好',
-                dataIndex: 'interest',
-                render(abc) {
-                    let config = {
-                        '1': '游泳',
-                        '2': '长跑',
-                        '3': '篮球',
-                        '4': '足球',
-                        '5': '爬山',
-                    }
-                    return config[abc]
-                }
-            },
-            {
-                title: '是否已婚',
-                dataIndex: 'isMarry',
-                render(isMarry) {
-                    return isMarry === 0 ? '已婚' : '未婚'
-                }
-            },
-            {
-                title: '生日',
-                dataIndex: 'birthday'
-            },
-            {
-                title: '联系地址',
-                dataIndex: 'address'
-            },
-            {
-                title: '早起时间',
-                dataIndex: 'time'
-            },
-        ]
+        const columns = [{
+            title: 'ID',
+            dataIndex: 'id',
+            align: 'center'
+        }, {
+            title: '用户名',
+            dataIndex: 'userName',
+            align: 'center'
+        }, {
+            title: '性别',
+            dataIndex: 'sex',
+            align: 'center',
+            render: (sex) => {
+                return sexConfig[sex];
+            }
+        }, {
+            title: '状态',
+            dataIndex: 'status',
+            align: 'center',
+            render: (status) => {
+                return statusConfig[status];
+            }
+        }, {
+            title: '爱好',
+            dataIndex: 'interest',
+            align: 'center',
+            render: (interest) => {
+                return interestConfig[interest];
+            }
+        }, {
+            title: '是否已婚',
+            dataIndex: 'isMarry',
+            align: 'center',
+            render: (isMarry) => {
+                return isMarryConfig[isMarry];
+            }
+        }, {
+            title: '生日',
+            dataIndex: 'birthday',
+            align: 'center'
+        }, {
+            title: '联系地址',
+            dataIndex: 'address',
+            align: 'center'
+        }, {
+            title: '早起时间',
+            dataIndex: 'time',
+            align: 'center'
+        }]
 
         const selectedRowKeys = this.state.selectedRowKeys
         let rowSelection = {
