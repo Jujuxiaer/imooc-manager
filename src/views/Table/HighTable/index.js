@@ -62,23 +62,16 @@ export default class HighTable extends React.Component {
         })
     }
 
-    //删除复选框表格数据
-    handleDelete = () => {
-        if (this.state.selectedCheckRowKeys.length > 0) {
-            Modal.info({
-                title: '确认删除？',
-                content: `确认删除用户${this.state.selectedCheckRowKeys.join(',')}`,
-                onOk: () => {
-                    Message.success('删除成功');
-                    this.getList();
-                }
-            })
-        } else {
-            Modal.error({
-                title: '提示',
-                content: '请选择要删除的用户'
-            })
-        }
+
+    handleDelete = (row) => {
+        Modal.confirm({
+            title: '确认删除',
+            content: `确认删除用户${row.userName}吗?`,
+            onOk: () => {
+                Message.success('删除成功！');
+                this.getFixedHeadertList();
+            }
+        })
     }
 
 
@@ -356,7 +349,7 @@ export default class HighTable extends React.Component {
             align: 'center',
             width: 180,
             render: (text, row) => {
-                return <Button type="danger" size="small" onClick={() => { this.handleDelete(row) }} icon="delete">删除</Button>
+                return <Button type="danger" size="small" onClick={(row) => { this.handleDelete(row) }} icon="delete">删除</Button>
             }
         }]
 
