@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Table, Modal, Message, Button } from 'antd'
+import { Card, Table, Modal, Message, Button, Badge } from 'antd'
 import "./index.less"
 import axios from '../../../axios/axios'
 import Utils from '../../../utils/utils';
@@ -317,9 +317,15 @@ export default class HighTable extends React.Component {
         }, {
             title: '爱好',
             dataIndex: 'interest',
-            align: 'center',
             render: (interest) => {
-                return interestConfig[interest];
+                let config = {
+                    '1': <Badge status="success" text="Success" />,
+                    '2': <Badge status="error" text="Error" />,
+                    '3': <Badge status="default" text="Default" />,
+                    '4': <Badge status="processing" text="Processing" />,
+                    '5': <Badge status="warning" text="Warning" />
+                }
+                return config[interest];
             },
             width: 150
         }, {
@@ -385,30 +391,15 @@ export default class HighTable extends React.Component {
                         onChange={this.handleChange}
                     />
                 </Card>
-                {/* <Card title="Mock-多选" className="card">
-                    <div style={{ marginButtom: 10 }}>
-                        <Button type='danger' onClick={this.handleDelete}>删除</Button>
-                    </div>
+                <Card title="操作按钮" className="card">
                     <Table
+                        columns={columns4}
+                        dataSource={this.state.dataSource1}
                         bordered
-                        onRow={this.checkOnRow}
-                        rowSelection={rowCheckSelection}
-                        columns={columns}
-                        dataSource={this.state.dataSource}
+                        rowKey="id"
                         pagination={false}
-                    />
-                </Card> */}
-                {/* <Card title="Mock-表格分页" className="card">
-                    <div style={{ marginButtom: 10 }}>
-                        <Button type='danger' onClick={this.handleDelete}>删除</Button>
-                    </div>
-                    <Table
-                        bordered
-                        columns={columns}
-                        dataSource={this.state.dataSource}
-                        pagination={this.state.pagination}
-                    />
-                </Card> */}
+                    ></Table>
+                </Card>
             </div>
         )
     }
